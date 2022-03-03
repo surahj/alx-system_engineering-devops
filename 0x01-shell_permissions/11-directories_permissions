@@ -1,2 +1,2 @@
 #!/bin/bash
-chmod 777 hello
+sudo find . -type d -exec chmod ugo=+x {} \;
