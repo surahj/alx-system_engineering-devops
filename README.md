@@ -46,7 +46,7 @@ using project-based peer learning. For more information, visit
 [this link](https://www.alxafrica.com/).
 
 <p align="center">
-  <img src="https://www.alxafrica.com/wp-content/uploads/2022/01/header-logo.png"
+  <img src="[https://www.alxafrica.com/wp-content/uploads/2022/01/header-logo.png](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.facebook.com%2Falxafrica%2F&psig=AOvVaw1m1hLx97SArxSaqU0A-xvD&ust=1665805492381000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCMjgupfn3voCFQAAAAAdAAAAABAE)"
        alt="ALX logo"
   >
 </p>
