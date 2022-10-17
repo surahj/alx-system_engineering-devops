@@ -1,30 +1,31 @@
 #!/usr/bin/python3
-# -*- coding: utf-8 -*-
 """
-Created on Mon Sep 14 16:22:14 2020
-@author: Robinson Montes
+Return information for a given employee about his/her TODO list progress
 """
-from requests import get
-from sys import argv
+if __name__ == "__main__":
+    import requests
+    import sys
 
+    DONE_TASKS = 0
+    ALL_TASKS = 0
 
-if __name__ == '__main__':
-    user_id = argv[1]
-    url = 'https://jsonplaceholder.typicode.com/users/{}'.format(user_id)
-    response = get(url)
-    name = response.json().get('name')
+    URL_FOR_USERS = 'https://jsonplaceholder.typicode.com/users/{0}'.\
+        format(sys.argv[1])
+    URL_FOR_TODOS = 'https://jsonplaceholder.typicode.com/todos'
+    r_for_users = requests.get(URL_FOR_USERS)
+    r_for_todos = requests.get(URL_FOR_TODOS)
 
-    url = 'https://jsonplaceholder.typicode.com/users/{}/todos'.format(user_id)
-    response = get(url)
-    tasks = response.json()
-    done = 0
-    done_tasks = []
-    for task in tasks:
-        if task.get('completed'):
-            done_tasks.append(task)
-            done += 1
-
-    print("Employee {} is done with tasks({}/{}):"
-          .format(name, done, len(tasks)))
-    for task in done_tasks:
-        print("\t {}".format(task.get('title')))
+    name = r_for_users.json().get('name')
+    todos = r_for_todos.json()
+    for todo in todos:
+        if todo.get('userId') == int(sys.argv[1]):
+            ALL_TASKS += 1
+        if (todo.get('userId') == int(sys.argv[1]))\
+                and (todo.get('completed')):
+            DONE_TASKS += 1
+    print("Employee {} is done with tasks({}/{}):".
+          format(name, DONE_TASKS, ALL_TASKS))
+    for todo in todos:
+        if (todo.get('userId') == int(sys.argv[1]))\
+                and (todo.get('completed')):
+            print("	 {}".format(todo.get('title')))
